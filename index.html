@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,8 +40,16 @@
             z-index: -1;
         }
 
-        .glow-1 { top: -200px; left: -200px; }
-        .glow-2 { bottom: -200px; right: -200px; background: radial-gradient(circle, var(--secondary) 0%, transparent 70%); }
+        .glow-1 {
+            top: -200px;
+            left: -200px;
+        }
+
+        .glow-2 {
+            bottom: -200px;
+            right: -200px;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+        }
 
         .container {
             max-width: 1200px;
@@ -49,7 +58,7 @@
         }
 
         header {
-            min-height: 100vh;
+            padding: 120px 0 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -98,9 +107,9 @@
         }
 
         .features {
-            padding: 100px 0;
+            padding: 80px 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
@@ -109,7 +118,7 @@
             backdrop-filter: blur(10px);
             padding: 40px 30px;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s;
         }
 
@@ -127,20 +136,134 @@
             text-align: center;
             padding: 40px 0;
             color: var(--text-muted);
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .screenshots {
+            padding: 20px 0 80px;
+            text-align: center;
+        }
+
+        .about {
+            padding: 20px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .about .short-desc {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .stat-badge {
+            display: block;
+            background: rgba(138, 43, 226, 0.15);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .screenshots h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--text-main);
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .app-screenshot {
+            width: 250px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 4px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .app-screenshot:hover {
+            transform: scale(1.05);
+            z-index: 2;
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .hero-content { padding: 20px; }
+            header {
+                padding: 60px 0 30px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            p.subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .hero-content {
+                padding: 15px;
+            }
+            
+            .gallery {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding: 20px 5vw; /* Отступы по краям экрана */
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Прячем ползунок в Firefox */
+            }
+            
+            .gallery::-webkit-scrollbar {
+                display: none; /* Прячем ползунок в Chrome/Safari */
+            }
+            
+            .app-screenshot {
+                flex: 0 0 auto; /* Запрещаем сжиматься */
+                width: 240px;
+                scroll-snap-align: center; /* Центруем при свайпе */
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
@@ -148,11 +271,13 @@
     <header>
         <div class="container hero-content">
             <h1>AudioBooks</h1>
-            <p class="subtitle">Слушайте любимые книги где угодно и когда угодно. Удобный плеер, оффлайн режим и приятный интерфейс.</p>
-            
+            <p class="subtitle">Слушайте любимые книги где угодно и когда угодно. Удобный плеер, оффлайн режим и
+                приятный интерфейс.</p>
+
             <!-- СЮДА НУЖНО БУДЕТ ВСТАВИТЬ ССЫЛКУ ИЗ GITHUB RELEASES -->
             <a href="https://github.com/minenkosergei-web/AudioBooks-App/releases/tag/1.0.0" class="download-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -161,6 +286,29 @@
             </a>
         </div>
     </header>
+
+    <section class="container screenshots">
+        <div class="gallery">
+            <img src="screen1.jpg" alt="Экран 1" class="app-screenshot">
+            <img src="screen2.jpg" alt="Экран 2" class="app-screenshot">
+            <img src="screen3.jpg" alt="Экран 3" class="app-screenshot">
+        </div>
+    </section>
+
+    <section class="container about">
+        <h2>О приложении</h2>
+        <p class="short-desc">Библиотека аудиокниг. Слушай, скачивай. Проводи время с пользой.</p>
+        
+        <p><strong>Аудио Книги</strong> — это удобное приложение для тех, кто любит слушать книги и не хочет каждый раз искать их по разным сайтам. Здесь всё собрано в одном месте: можно найти книгу, открыть её, начать слушать и потом спокойно продолжить с того места, где остановился.</p>
+        
+        <p>Приложение сделано с упором на простоту и удобство. Можно искать книги по названию, смотреть авторов, чтецов и жанры, добавлять интересное в «Мои книги» и быстро возвращаться к тому, что уже слушаешь. Позиция прослушивания сохраняется, поэтому не нужно каждый раз вспоминать, на какой главе остановился.</p>
+        
+        <p>Если совсем по-простому: это приложение, которое помогает слушать аудиокниги спокойно, без лишней суеты и без постоянного хождения по разным сайтам.</p>
+        
+        <div class="stat-badge">
+            📚 Встроенная база: 88 595 книг (и она постоянно пополняется из интернета!)
+        </div>
+    </section>
 
     <section class="container features">
         <div class="feature-card">
@@ -183,4 +331,5 @@
         </div>
     </footer>
 </body>
+
 </html>
